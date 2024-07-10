@@ -1,0 +1,63 @@
+GIE
+void GIE_enable(void)
+void GIE_disable(void)
+
+
+
+TIMER 1
+void TIMER1_init(void)
+void TIMER1_setCallBack( void(*ptr2fun)() )
+
+
+
+TIMER 2
+void TIMER2_init(void)
+
+
+
+LED
+#define LED_1 1 
+#define LED_2 2 
+#define LED_3 3 
+#define LED_4 4 
+void LED_init(void)
+void LED_turnOn(char ledNo)
+void LED_turnOff(char ledNo)
+
+
+
+TIMER 0
+void TIMER0_init(void)
+void TIMER0_setDutyCycle(char speed)    speed: range(0-->100) 
+
+
+
+UART Bluetooth
+void UART_init(void)
+void UART_sendStr(char str[])
+void UART_onReceive( void(*ptr2fun)(char c) )
+
+
+
+UART IR RECEIVE
+void UART_init(void)
+void UART_onReceive( void(*ptr2fun)(char c) )
+
+
+
+
+Motor driver
+enum motion{ forward, backward, stop}
+enum rotation {right, left , noRotate}
+void MOTOR_init(void)
+void MOTOR_setDutyCyle(char speed)  //dont implement this function, it just call "TIMER0_setDutyCycle" from timer0 driver
+void MOTOR_setMotion(enum motion m)
+void MOTOR_setRotate(enum rotation r)
+
+
+
+
+
+
+
+
