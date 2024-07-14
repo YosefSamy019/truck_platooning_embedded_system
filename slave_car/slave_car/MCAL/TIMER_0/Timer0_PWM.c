@@ -23,7 +23,6 @@ void TIMER0_init(void){
 	CLR_BIT(TCCR0,CS01);
 	SET_BIT(TCCR0,CS02);
 	
-	SET_BIT(TIMSK,TOIE0);
 }
 
 

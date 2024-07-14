@@ -23,14 +23,11 @@ void TIMER0_init(void){
 	CLR_BIT(TCCR0,CS01);
 	SET_BIT(TCCR0,CS02);
 	
-	SET_BIT(TIMSK,TOIE0);
 }
 
 
 void TIMER0_setDutyCycle(uint8 speed){
 	uint8 OCR_Val= speed*2.55;
 	OCR0=OCR_Val;
-	
-	
 	
 }

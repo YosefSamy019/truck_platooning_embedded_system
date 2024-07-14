@@ -18,47 +18,70 @@
 #include "DIO/DIO_interface.h"
 #include "UART/UART_Bluetooth.h"
 #include "TIMER_2/TIMER2_interface.h"
+#include "SPI/SPI_interface.h"
 
 #include "MOTOR/MOTOR.h"
 
-void c(){
+void c(char c){
+	UART_sendStr("A");
 		PORTA ^= 1;
+
 }
-
-void main(){
-	UART_init();
-	DIO_pinMode(PIN_A0,OUTPUT);
-
-	SET_BIT(SREG,7);
-
-	DIO_pinMode(PIN_D7,OUTPUT);
-	TIMER2_init();
-	//TIMER2_setCallback(c);
-	while(1);
-}
-
 
 /*
 void main(){
-	MOTOR_init();
-	TIMER0_init();
+		DIO_pinMode(PIN_A0,OUTPUT);
+
+
+		DIO_pinMode(PIN_D7,OUTPUT);
+		//TIMER2_init();
+		
+		SET_BIT(SREG,7);
+
+	UART_init();
 	
-	MOTOR_setMotion(stop);
-	MOTOR_setRotate(noRotate);
-	MOTOR_setDutyCycle(50);
-	
+	UART_onReceive(c);	
 	
 	while(1){
-		MOTOR_setMotion(stop);
-		MOTOR_setRotate(right);
-		_delay_ms(1000);
-		MOTOR_setRotate(left);
-		_delay_ms(1000);
+		_delay_ms(2000);
+	}
+	
+	
+
+	
+}
+
+*/
+
+void main(){
+			GI_voidEnable();
+
+					DIO_pinMode(PIN_A0,OUTPUT);
+
+		
+	SPI_init();
+	//MOTOR_init();
+	//TIMER0_init();
+	//
+	//MOTOR_setMotion(stop);
+	//MOTOR_setRotate(noRotate);
+	//MOTOR_setDutyCycle(50);
+	//
+	SPI_setCallback(c);
+	
+	UART_init();
+	UART_sendStr("HI");
+	//UART_onReceive(c);
+
+	while(1){
+		static uint8 i=0;
+		//SPI_transceive(i++);
+		
 
 	}
 }
 
-*/
+
 /*
 void isr(){
 	static int i=0;

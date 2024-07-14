@@ -27,7 +27,7 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
                               HAL/MOTOR/MOTOR.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
-                              MCAL/TIMER_1/timer1.o (__do_clear_bss)
+                              MCAL/SPI/SPI_interface.o (__do_clear_bss)
 
 Discarded input sections
 
@@ -63,7 +63,6 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .text.c        0x00000000        0xa main.o
  .text          0x00000000        0x0 MCAL/DIO/DIO_program.o
  .data          0x00000000        0x0 MCAL/DIO/DIO_program.o
  .bss           0x00000000        0x0 MCAL/DIO/DIO_program.o
@@ -71,11 +70,21 @@ Discarded input sections
                 0x00000000      0x116 MCAL/DIO/DIO_program.o
  .text.DIO_digitalRead
                 0x00000000       0x66 MCAL/DIO/DIO_program.o
+ .text          0x00000000        0x0 MCAL/GI/GI_Program.o
+ .data          0x00000000        0x0 MCAL/GI/GI_Program.o
+ .bss           0x00000000        0x0 MCAL/GI/GI_Program.o
+ .text.GI_voidDisable
+                0x00000000        0x8 MCAL/GI/GI_Program.o
+ .text          0x00000000        0x0 MCAL/SPI/SPI_interface.o
+ .data          0x00000000        0x0 MCAL/SPI/SPI_interface.o
+ .bss           0x00000000        0x0 MCAL/SPI/SPI_interface.o
+ .text.SPI_transceive
+                0x00000000       0x32 MCAL/SPI/SPI_interface.o
  .text          0x00000000        0x0 MCAL/TIMER_0/Timer0_PWM.o
  .data          0x00000000        0x0 MCAL/TIMER_0/Timer0_PWM.o
  .bss           0x00000000        0x0 MCAL/TIMER_0/Timer0_PWM.o
  .text.TIMER0_init
-                0x00000000       0x3a MCAL/TIMER_0/Timer0_PWM.o
+                0x00000000       0x34 MCAL/TIMER_0/Timer0_PWM.o
  .text.TIMER0_setDutyCycle
                 0x00000000       0x20 MCAL/TIMER_0/Timer0_PWM.o
  .debug_info    0x00000000      0x10f MCAL/TIMER_0/Timer0_PWM.o
@@ -84,7 +93,7 @@ Discarded input sections
  .debug_aranges
                 0x00000000       0x28 MCAL/TIMER_0/Timer0_PWM.o
  .debug_ranges  0x00000000       0x18 MCAL/TIMER_0/Timer0_PWM.o
- .debug_line    0x00000000      0x131 MCAL/TIMER_0/Timer0_PWM.o
+ .debug_line    0x00000000      0x12b MCAL/TIMER_0/Timer0_PWM.o
  .debug_str     0x00000000      0x205 MCAL/TIMER_0/Timer0_PWM.o
  .comment       0x00000000       0x31 MCAL/TIMER_0/Timer0_PWM.o
  .debug_frame   0x00000000       0x34 MCAL/TIMER_0/Timer0_PWM.o
@@ -98,13 +107,13 @@ Discarded input sections
  .text          0x00000000        0x0 MCAL/TIMER_2/TIMER2_interface.o
  .data          0x00000000        0x0 MCAL/TIMER_2/TIMER2_interface.o
  .bss           0x00000000        0x0 MCAL/TIMER_2/TIMER2_interface.o
+ .text.TIMER2_init
+                0x00000000       0x2a MCAL/TIMER_2/TIMER2_interface.o
  .text.TIMER2_setCallback
                 0x00000000        0xa MCAL/TIMER_2/TIMER2_interface.o
  .text          0x00000000        0x0 MCAL/UART/UART_Bluetooth.o
  .data          0x00000000        0x0 MCAL/UART/UART_Bluetooth.o
  .bss           0x00000000        0x0 MCAL/UART/UART_Bluetooth.o
- .text.UART_sendStr
-                0x00000000       0x20 MCAL/UART/UART_Bluetooth.o
  .text.UART_onReceive
                 0x00000000       0x10 MCAL/UART/UART_Bluetooth.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
@@ -229,6 +238,8 @@ LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/
 LOAD HAL/MOTOR/MOTOR.o
 LOAD main.o
 LOAD MCAL/DIO/DIO_program.o
+LOAD MCAL/GI/GI_Program.o
+LOAD MCAL/SPI/SPI_interface.o
 LOAD MCAL/TIMER_0/Timer0_PWM.o
 LOAD MCAL/TIMER_1/timer1.o
 LOAD MCAL/TIMER_2/TIMER2_interface.o
@@ -342,7 +353,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x33e
+.text           0x00000000      0x402
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
                 0x00000000                __vector_default
@@ -415,37 +426,50 @@ END GROUP
                 0x0000008e                __vector_15
                 0x0000008e                __vector_8
                 0x0000008e                __vector_14
-                0x0000008e                __vector_10
                 0x0000008e                __vector_16
                 0x0000008e                __vector_18
                 0x0000008e                __vector_20
                 0x00000092                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x00000092       0x20 main.o
-                0x00000092                main
+ .text.c        0x00000092       0x12 main.o
+                0x00000092                c
+ .text.main     0x000000a4       0x26 main.o
+                0x000000a4                main
  .text.DIO_pinMode
-                0x000000b2      0x116 MCAL/DIO/DIO_program.o
-                0x000000b2                DIO_pinMode
+                0x000000ca      0x116 MCAL/DIO/DIO_program.o
+                0x000000ca                DIO_pinMode
+ .text.GI_voidEnable
+                0x000001e0        0x8 MCAL/GI/GI_Program.o
+                0x000001e0                GI_voidEnable
+ .text.SPI_init
+                0x000001e8       0x46 MCAL/SPI/SPI_interface.o
+                0x000001e8                SPI_init
+ .text.SPI_setCallback
+                0x0000022e        0xa MCAL/SPI/SPI_interface.o
+                0x0000022e                SPI_setCallback
+ .text.__vector_10
+                0x00000238       0x5c MCAL/SPI/SPI_interface.o
+                0x00000238                __vector_10
  .text.__vector_6
-                0x000001c8       0x52 MCAL/TIMER_1/timer1.o
-                0x000001c8                __vector_6
- .text.TIMER2_init
-                0x0000021a       0x2a MCAL/TIMER_2/TIMER2_interface.o
-                0x0000021a                TIMER2_init
+                0x00000294       0x52 MCAL/TIMER_1/timer1.o
+                0x00000294                __vector_6
  .text.__vector_3
-                0x00000244       0x92 MCAL/TIMER_2/TIMER2_interface.o
-                0x00000244                __vector_3
+                0x000002e6       0x92 MCAL/TIMER_2/TIMER2_interface.o
+                0x000002e6                __vector_3
  .text.UART_init
-                0x000002d6       0x10 MCAL/UART/UART_Bluetooth.o
-                0x000002d6                UART_init
+                0x00000378       0x12 MCAL/UART/UART_Bluetooth.o
+                0x00000378                UART_init
+ .text.UART_sendStr
+                0x0000038a       0x20 MCAL/UART/UART_Bluetooth.o
+                0x0000038a                UART_sendStr
  .text.__vector_11
-                0x000002e6       0x54 MCAL/UART/UART_Bluetooth.o
-                0x000002e6                __vector_11
-                0x0000033a                . = ALIGN (0x2)
+                0x000003aa       0x54 MCAL/UART/UART_Bluetooth.o
+                0x000003aa                __vector_11
+                0x000003fe                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000033a        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x0000033a                _exit
-                0x0000033a                exit
+ .fini9         0x000003fe        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x000003fe                _exit
+                0x000003fe                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -464,44 +488,48 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000033a        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x000003fe        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000033e                _etext = .
+                0x00000402                _etext = .
 
-.data           0x00800060        0x0 load address 0x0000033e
+.data           0x00800060        0x6 load address 0x00000402
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
+ .rodata.str1.1
+                0x00800060        0x5 main.o
  *(.gnu.linkonce.r*)
-                0x00800060                . = ALIGN (0x2)
-                0x00800060                _edata = .
-                0x00800060                PROVIDE (__data_end, .)
+                0x00800066                . = ALIGN (0x2)
+ *fill*         0x00800065        0x1 
+                0x00800066                _edata = .
+                0x00800066                PROVIDE (__data_end, .)
 
-.bss            0x00800060        0xa
-                0x00800060                PROVIDE (__bss_start, .)
+.bss            0x00800066        0xc
+                0x00800066                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
+ .bss.callback  0x00800066        0x2 MCAL/SPI/SPI_interface.o
  .bss.timer1_callback
-                0x00800060        0x2 MCAL/TIMER_1/timer1.o
- .bss.counter.1637
-                0x00800062        0x4 MCAL/TIMER_2/TIMER2_interface.o
- .bss.callback  0x00800066        0x2 MCAL/TIMER_2/TIMER2_interface.o
+                0x00800068        0x2 MCAL/TIMER_1/timer1.o
+ .bss.counter.1639
+                0x0080006a        0x4 MCAL/TIMER_2/TIMER2_interface.o
+ .bss.callback  0x0080006e        0x2 MCAL/TIMER_2/TIMER2_interface.o
  .bss.UART_receiveCallback
-                0x00800068        0x2 MCAL/UART/UART_Bluetooth.o
-                0x00800068                UART_receiveCallback
+                0x00800070        0x2 MCAL/UART/UART_Bluetooth.o
+                0x00800070                UART_receiveCallback
  *(COMMON)
-                0x0080006a                PROVIDE (__bss_end, .)
-                0x0000033e                __data_load_start = LOADADDR (.data)
-                0x0000033e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00800072                PROVIDE (__bss_end, .)
+                0x00000402                __data_load_start = LOADADDR (.data)
+                0x00000408                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080006a        0x0
+.noinit         0x00800072        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080006a                _end = .
+                0x00800072                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -546,6 +574,8 @@ END GROUP
  .comment       0x00000000       0x30 main.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 MCAL/DIO/DIO_program.o
+ .comment       0x00000030       0x31 MCAL/GI/GI_Program.o
+ .comment       0x00000030       0x31 MCAL/SPI/SPI_interface.o
  .comment       0x00000030       0x31 MCAL/TIMER_1/timer1.o
  .comment       0x00000030       0x31 MCAL/TIMER_2/TIMER2_interface.o
  .comment       0x00000030       0x31 MCAL/UART/UART_Bluetooth.o
@@ -570,77 +600,95 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xf0
+.debug_aranges  0x00000000      0x150
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 main.o
  .debug_aranges
                 0x00000028       0x30 MCAL/DIO/DIO_program.o
  .debug_aranges
-                0x00000058       0x30 MCAL/TIMER_1/timer1.o
+                0x00000058       0x28 MCAL/GI/GI_Program.o
  .debug_aranges
-                0x00000088       0x30 MCAL/TIMER_2/TIMER2_interface.o
+                0x00000080       0x38 MCAL/SPI/SPI_interface.o
  .debug_aranges
-                0x000000b8       0x38 MCAL/UART/UART_Bluetooth.o
+                0x000000b8       0x30 MCAL/TIMER_1/timer1.o
+ .debug_aranges
+                0x000000e8       0x30 MCAL/TIMER_2/TIMER2_interface.o
+ .debug_aranges
+                0x00000118       0x38 MCAL/UART/UART_Bluetooth.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xb8e
+.debug_info     0x00000000      0xea1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x52e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
- .debug_info    0x0000052e      0x129 main.o
- .debug_info    0x00000657      0x164 MCAL/DIO/DIO_program.o
- .debug_info    0x000007bb      0x112 MCAL/TIMER_1/timer1.o
- .debug_info    0x000008cd      0x12e MCAL/TIMER_2/TIMER2_interface.o
- .debug_info    0x000009fb      0x193 MCAL/UART/UART_Bluetooth.o
+ .debug_info    0x0000052e      0x1b9 main.o
+ .debug_info    0x000006e7      0x164 MCAL/DIO/DIO_program.o
+ .debug_info    0x0000084b       0xae MCAL/GI/GI_Program.o
+ .debug_info    0x000008f9      0x1d4 MCAL/SPI/SPI_interface.o
+ .debug_info    0x00000acd      0x112 MCAL/TIMER_1/timer1.o
+ .debug_info    0x00000bdf      0x12e MCAL/TIMER_2/TIMER2_interface.o
+ .debug_info    0x00000d0d      0x194 MCAL/UART/UART_Bluetooth.o
 
-.debug_abbrev   0x00000000      0x884
+.debug_abbrev   0x00000000      0xa19
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4e7 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
- .debug_abbrev  0x000004e7       0xa0 main.o
- .debug_abbrev  0x00000587       0xa9 MCAL/DIO/DIO_program.o
- .debug_abbrev  0x00000630       0xb6 MCAL/TIMER_1/timer1.o
- .debug_abbrev  0x000006e6       0xb3 MCAL/TIMER_2/TIMER2_interface.o
- .debug_abbrev  0x00000799       0xeb MCAL/UART/UART_Bluetooth.o
+ .debug_abbrev  0x000004e7       0xd6 main.o
+ .debug_abbrev  0x000005bd       0xa9 MCAL/DIO/DIO_program.o
+ .debug_abbrev  0x00000666       0x46 MCAL/GI/GI_Program.o
+ .debug_abbrev  0x000006ac      0x119 MCAL/SPI/SPI_interface.o
+ .debug_abbrev  0x000007c5       0xb6 MCAL/TIMER_1/timer1.o
+ .debug_abbrev  0x0000087b       0xb3 MCAL/TIMER_2/TIMER2_interface.o
+ .debug_abbrev  0x0000092e       0xeb MCAL/UART/UART_Bluetooth.o
 
-.debug_line     0x00000000      0x728
+.debug_line     0x00000000      0x917
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
- .debug_line    0x00000116      0x135 main.o
- .debug_line    0x0000024b      0x195 MCAL/DIO/DIO_program.o
- .debug_line    0x000003e0       0xf6 MCAL/TIMER_1/timer1.o
- .debug_line    0x000004d6       0xf5 MCAL/TIMER_2/TIMER2_interface.o
- .debug_line    0x000005cb      0x15d MCAL/UART/UART_Bluetooth.o
+ .debug_line    0x00000116      0x13a main.o
+ .debug_line    0x00000250      0x195 MCAL/DIO/DIO_program.o
+ .debug_line    0x000003e5       0x85 MCAL/GI/GI_Program.o
+ .debug_line    0x0000046a      0x165 MCAL/SPI/SPI_interface.o
+ .debug_line    0x000005cf       0xf6 MCAL/TIMER_1/timer1.o
+ .debug_line    0x000006c5       0xf5 MCAL/TIMER_2/TIMER2_interface.o
+ .debug_line    0x000007ba      0x15d MCAL/UART/UART_Bluetooth.o
 
-.debug_frame    0x00000000      0x22c
+.debug_frame    0x00000000      0x2fc
  *(.debug_frame)
  .debug_frame   0x00000000       0x34 main.o
  .debug_frame   0x00000034       0x44 MCAL/DIO/DIO_program.o
- .debug_frame   0x00000078       0x8c MCAL/TIMER_1/timer1.o
- .debug_frame   0x00000104       0x8c MCAL/TIMER_2/TIMER2_interface.o
- .debug_frame   0x00000190       0x9c MCAL/UART/UART_Bluetooth.o
+ .debug_frame   0x00000078       0x34 MCAL/GI/GI_Program.o
+ .debug_frame   0x000000ac       0x9c MCAL/SPI/SPI_interface.o
+ .debug_frame   0x00000148       0x8c MCAL/TIMER_1/timer1.o
+ .debug_frame   0x000001d4       0x8c MCAL/TIMER_2/TIMER2_interface.o
+ .debug_frame   0x00000260       0x9c MCAL/UART/UART_Bluetooth.o
 
-.debug_str      0x00000000      0x4cf
+.debug_str      0x00000000      0x568
  *(.debug_str)
  .debug_str     0x00000000      0x1af C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
- .debug_str     0x000001af      0x1a7 main.o
-                                0x1db (size before relaxing)
- .debug_str     0x00000356       0x4d MCAL/DIO/DIO_program.o
+ .debug_str     0x000001af      0x1cf main.o
+                                0x208 (size before relaxing)
+ .debug_str     0x0000037e       0x4d MCAL/DIO/DIO_program.o
                                 0x1d3 (size before relaxing)
- .debug_str     0x000003a3       0x64 MCAL/TIMER_1/timer1.o
+ .debug_str     0x000003cb       0x2d MCAL/GI/GI_Program.o
+                                0x1ce (size before relaxing)
+ .debug_str     0x000003f8       0x57 MCAL/SPI/SPI_interface.o
+                                0x22b (size before relaxing)
+ .debug_str     0x0000044f       0x64 MCAL/TIMER_1/timer1.o
                                 0x20c (size before relaxing)
- .debug_str     0x00000407       0x5b MCAL/TIMER_2/TIMER2_interface.o
+ .debug_str     0x000004b3       0x55 MCAL/TIMER_2/TIMER2_interface.o
                                 0x218 (size before relaxing)
- .debug_str     0x00000462       0x6d MCAL/UART/UART_Bluetooth.o
+ .debug_str     0x00000508       0x60 MCAL/UART/UART_Bluetooth.o
                                 0x22d (size before relaxing)
 
-.debug_loc      0x00000000      0x75c
+.debug_loc      0x00000000      0x8a7
  *(.debug_loc)
- .debug_loc     0x00000000      0x467 MCAL/DIO/DIO_program.o
- .debug_loc     0x00000467       0xcb MCAL/TIMER_1/timer1.o
- .debug_loc     0x00000532       0xcb MCAL/TIMER_2/TIMER2_interface.o
- .debug_loc     0x000005fd      0x15f MCAL/UART/UART_Bluetooth.o
+ .debug_loc     0x00000000       0x21 main.o
+ .debug_loc     0x00000021      0x467 MCAL/DIO/DIO_program.o
+ .debug_loc     0x00000488      0x12a MCAL/SPI/SPI_interface.o
+ .debug_loc     0x000005b2       0xcb MCAL/TIMER_1/timer1.o
+ .debug_loc     0x0000067d       0xcb MCAL/TIMER_2/TIMER2_interface.o
+ .debug_loc     0x00000748      0x15f MCAL/UART/UART_Bluetooth.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -660,13 +708,15 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xa0
+.debug_ranges   0x00000000       0xe0
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 main.o
  .debug_ranges  0x00000018       0x20 MCAL/DIO/DIO_program.o
- .debug_ranges  0x00000038       0x20 MCAL/TIMER_1/timer1.o
- .debug_ranges  0x00000058       0x20 MCAL/TIMER_2/TIMER2_interface.o
- .debug_ranges  0x00000078       0x28 MCAL/UART/UART_Bluetooth.o
+ .debug_ranges  0x00000038       0x18 MCAL/GI/GI_Program.o
+ .debug_ranges  0x00000050       0x28 MCAL/SPI/SPI_interface.o
+ .debug_ranges  0x00000078       0x20 MCAL/TIMER_1/timer1.o
+ .debug_ranges  0x00000098       0x20 MCAL/TIMER_2/TIMER2_interface.o
+ .debug_ranges  0x000000b8       0x28 MCAL/UART/UART_Bluetooth.o
 
 .debug_macro
  *(.debug_macro)

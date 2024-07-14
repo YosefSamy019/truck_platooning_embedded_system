@@ -13,10 +13,10 @@
 #include <util/delay.h>
 
 // Define motor control pins
-#define IN1 PIN_B4
-#define IN2 PIN_B5
-#define IN3 PIN_B6
-#define IN4 PIN_B7
+#define IN1 PIN_C4
+#define IN2 PIN_C5
+#define IN3 PIN_C6
+#define IN4 PIN_C7
 
 // Define motion and rotation enums
 enum motion { forward, backward, stop };

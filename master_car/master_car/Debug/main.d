@@ -22,7 +22,10 @@ main.d main.o: .././main.c \
  ../MCAL/TIMER_2/../../LIB/BIT_MATH.h \
  ../MCAL/TIMER_2/../../MCAL/DIO/DIO_interface.h \
  ../MCAL/TIMER_2/TIMER2_config.h ../MCAL/TIMER_2/TIMER2_private.h \
- ../HAL/MOTOR/MOTOR.h
+ ../MCAL/SPI/SPI_interface.h ../MCAL/SPI/SPI_config.h \
+ ../MCAL/SPI/SPI_interface.h ../MCAL/SPI/SPI_private.h \
+ ../MCAL/SPI/../../LIB/STD_TYPES.h \
+ ../MCAL/SPI/../../MCAL/DIO/DIO_interface.h ../HAL/MOTOR/MOTOR.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -79,5 +82,17 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../MCAL/TIMER_2/TIMER2_config.h:
 
 ../MCAL/TIMER_2/TIMER2_private.h:
+
+../MCAL/SPI/SPI_interface.h:
+
+../MCAL/SPI/SPI_config.h:
+
+../MCAL/SPI/SPI_interface.h:
+
+../MCAL/SPI/SPI_private.h:
+
+../MCAL/SPI/../../LIB/STD_TYPES.h:
+
+../MCAL/SPI/../../MCAL/DIO/DIO_interface.h:
 
 ../HAL/MOTOR/MOTOR.h:

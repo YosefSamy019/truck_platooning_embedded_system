@@ -39,6 +39,8 @@ SUBDIRS :=  \
 ../MCAL \
 ../LIB \
 ../MCAL/DIO \
+../MCAL/GI \
+../MCAL/SPI \
 ../MCAL/TIMER_2 \
 ../MCAL/UART \
 ../MCAL/TIMER_1 \
@@ -50,6 +52,8 @@ C_SRCS +=  \
 ../HAL/MOTOR/MOTOR.c \
 ../main.c \
 ../MCAL/DIO/DIO_program.c \
+../MCAL/GI/GI_Program.c \
+../MCAL/SPI/SPI_interface.c \
 ../MCAL/TIMER_0/Timer0_PWM.c \
 ../MCAL/TIMER_1/timer1.c \
 ../MCAL/TIMER_2/TIMER2_interface.c \
@@ -66,6 +70,8 @@ OBJS +=  \
 HAL/MOTOR/MOTOR.o \
 main.o \
 MCAL/DIO/DIO_program.o \
+MCAL/GI/GI_Program.o \
+MCAL/SPI/SPI_interface.o \
 MCAL/TIMER_0/Timer0_PWM.o \
 MCAL/TIMER_1/timer1.o \
 MCAL/TIMER_2/TIMER2_interface.o \
@@ -75,6 +81,8 @@ OBJS_AS_ARGS +=  \
 HAL/MOTOR/MOTOR.o \
 main.o \
 MCAL/DIO/DIO_program.o \
+MCAL/GI/GI_Program.o \
+MCAL/SPI/SPI_interface.o \
 MCAL/TIMER_0/Timer0_PWM.o \
 MCAL/TIMER_1/timer1.o \
 MCAL/TIMER_2/TIMER2_interface.o \
@@ -84,6 +92,8 @@ C_DEPS +=  \
 HAL/MOTOR/MOTOR.d \
 main.d \
 MCAL/DIO/DIO_program.d \
+MCAL/GI/GI_Program.d \
+MCAL/SPI/SPI_interface.d \
 MCAL/TIMER_0/Timer0_PWM.d \
 MCAL/TIMER_1/timer1.d \
 MCAL/TIMER_2/TIMER2_interface.d \
@@ -93,6 +103,8 @@ C_DEPS_AS_ARGS +=  \
 HAL/MOTOR/MOTOR.d \
 main.d \
 MCAL/DIO/DIO_program.d \
+MCAL/GI/GI_Program.d \
+MCAL/SPI/SPI_interface.d \
 MCAL/TIMER_0/Timer0_PWM.d \
 MCAL/TIMER_1/timer1.d \
 MCAL/TIMER_2/TIMER2_interface.d \
@@ -127,6 +139,20 @@ HAL/MOTOR/MOTOR.o: ../HAL/MOTOR/MOTOR.c
 	
 
 MCAL/DIO/DIO_program.o: ../MCAL/DIO/DIO_program.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../HAL" -I"../MCAL" -I"../LIB"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega16 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega16" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/GI/GI_Program.o: ../MCAL/GI/GI_Program.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../HAL" -I"../MCAL" -I"../LIB"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega16 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega16" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/SPI/SPI_interface.o: ../MCAL/SPI/SPI_interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../APP" -I"../HAL" -I"../MCAL" -I"../LIB"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega16 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega16" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

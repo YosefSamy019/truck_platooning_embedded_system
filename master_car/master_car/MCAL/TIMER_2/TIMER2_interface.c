@@ -60,7 +60,7 @@ void TIMER2_init(void){
 		TCCR2_REG = (TCCR2_REG&0b11111000)|(TIMER2_PRESCALER_SELECT);
 	
 		//OC2 OUTPUT
-		DIO_setPinDir(OC2_PIN,DIR_OUTPUT);
+		DIO_pinMode(OC2_PIN,OUTPUT);
 	
 	#elif TIMER2_MODE_SELECT == TIMER2_MODE_PHASE_CORRECT
 		//Phase Correct
@@ -74,7 +74,7 @@ void TIMER2_init(void){
 		TCCR2_REG = (TCCR2_REG&0b11111000)|(TIMER2_PRESCALER_SELECT);
 	
 		//OC2 OUTPUT
-		DIO_setPinDir(OC2_PIN,DIR_OUTPUT);
+		DIO_pinMode(OC2_PIN,OUTPUT);
 	#else
 	#error TIMER2 error, mode operation undefined
 	#endif
