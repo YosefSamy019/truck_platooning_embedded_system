@@ -7,7 +7,7 @@ static void (*timer1_callback)() = NULL;
 void TIMER1_init(void) {
     // Set Timer1 to CTC/normal mode
     TCCR1A = 0x00;
-    TCCR1B = (1 << WGM12) | (TIMER1_PRESCALER_64 & 0b111);
+    TCCR1B = (1 << WGM12) | (TIMER1_PRESCALER_256 & 0b111);
 
     // Set Timer1 compare value for 50 ms interrupt
     OCR1A = 3125;
