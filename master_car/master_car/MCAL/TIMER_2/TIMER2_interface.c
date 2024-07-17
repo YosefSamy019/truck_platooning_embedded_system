@@ -46,7 +46,7 @@ void TIMER2_init(void){
 		TCCR2_REG = (TCCR2_REG&0b11111000)|(TIMER2_PRESCALER_SELECT);
 
 		// Timer/Counter2 Output Compare Match Interrupt Enable
-		SET_BIT(TIMSK_REG,7);
+		//SET_BIT(TIMSK_REG,7);
 	
 	#elif TIMER2_MODE_SELECT == TIMER2_MODE_FAST_PWM
 		//FAST PWM

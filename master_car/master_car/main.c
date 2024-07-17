@@ -22,90 +22,79 @@
 
 #include "MOTOR/MOTOR.h"
 
-void c(char c){
-	UART_sendStr("A");
-		PORTA ^= 1;
+#define C_FORWARD 'F'
+#define C_BACKWARD 'B'
+#define C_STOP 'S'
 
-}
+#define C_RIGHT 'R'
+#define C_LEFT 'L'
+#define C_NO_ROTATE 'N'
 
-/*
+enum motion curMotion = stop;
+enum motion curRotate = noRotate;
+
+void SPI_receive(uint8 c);
+
 void main(){
+		//leds
 		DIO_pinMode(PIN_A0,OUTPUT);
-
-
-		DIO_pinMode(PIN_D7,OUTPUT);
-		//TIMER2_init();
+		DIO_pinMode(PIN_A1,OUTPUT);
+		DIO_pinMode(PIN_A2,OUTPUT);
+		DIO_pinMode(PIN_A3,OUTPUT);
+	
+		DIO_digitalWrite(PIN_A0, HIGH);
+		DIO_digitalWrite(PIN_A1, HIGH);
 		
-		SET_BIT(SREG,7);
-
-	UART_init();
+		DIO_digitalWrite(PIN_A2,HIGH);
+		DIO_digitalWrite(PIN_A3,HIGH);
+	_delay_ms(1000);
 	
-	UART_onReceive(c);	
-	
-	while(1){
-		_delay_ms(2000);
-	}
-	
-	
-
-	
-}
-
-*/
-
-void main(){
-			GI_voidEnable();
-
-					DIO_pinMode(PIN_A0,OUTPUT);
-
-		
+	TIMER0_init();
+	GI_voidEnable();
 	SPI_init();
-	//MOTOR_init();
-	//TIMER0_init();
-	//
-	//MOTOR_setMotion(stop);
-	//MOTOR_setRotate(noRotate);
-	//MOTOR_setDutyCycle(50);
-	//
-	SPI_setCallback(c);
-	
 	UART_init();
-	UART_sendStr("HI");
-	//UART_onReceive(c);
-
+	TIMER0_setDutyCycle(30);
+	TIMER1_init();
+	TIMER2_init();
+	
+	SPI_setCallback(SPI_receive);
+	
 	while(1){
-		static uint8 i=0;
-		//SPI_transceive(i++);
+		MOTOR_setMotion(curMotion);
+		MOTOR_setRotate(curRotate);
 		
-
+		
+		DIO_digitalWrite(PIN_A0, curMotion == forward);
+		DIO_digitalWrite(PIN_A1, curMotion == backward);
+		
+		DIO_digitalWrite(PIN_A2, curRotate == right && curMotion != stop);
+		DIO_digitalWrite(PIN_A3, curRotate == left && curMotion != stop);
+		
+		
 	}
+	
 }
 
-
-/*
-void isr(){
-	static int i=0;
+void SPI_receive(uint8 c){
+	if(c == C_FORWARD || c == (C_FORWARD + 32) ){
+		curMotion = forward;
+	}
+	else if(c == C_BACKWARD || c == (C_BACKWARD + 32)){
+		curMotion = backward;
+	}
+	else if(c == C_STOP || c == (C_STOP + 32)){
+		curMotion = stop;
+	}
 	
-	if(i){
-		DIO_digitalWrite(PIN_A0,LOW);
+	else if(c == C_RIGHT || c == (C_RIGHT + 32)){
+		curRotate = right;
+	}else if(c == C_LEFT || c == (C_LEFT + 32)){
+		curRotate = left;
+	}else if(c == C_NO_ROTATE || c == (C_NO_ROTATE + 32)){
+		curRotate = noRotate;
 	}else{
-				DIO_digitalWrite(PIN_A0,HIGH);
+		//nothig
 	}
-	i=~i;
+	uint8 arr[] = {c,'\0'};
+	UART_sendStr(arr);
 }
-
-int main(void)
-{
-	
-	SET_BIT(SREG,7);
-	
-		DIO_pinMode(PIN_A0,OUTPUT);
-TIMER1_init();
-TIMER1_setCallBack(isr);
-	
-    while (1) 
-    {
-    }
-}
-
-*/

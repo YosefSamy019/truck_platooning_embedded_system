@@ -55,6 +55,14 @@ int main(void)
 	DIO_pinMode(PIN_A2,OUTPUT);
 	DIO_pinMode(PIN_A3,OUTPUT);
 
+	DIO_digitalWrite(PIN_A0, HIGH);
+	DIO_digitalWrite(PIN_A1, HIGH);
+	
+	DIO_digitalWrite(PIN_A2,HIGH);
+	DIO_digitalWrite(PIN_A3,HIGH);
+	_delay_ms(1000);
+	
+
 	GI_voidEnable();
 	TIMER0_init();
 	TIMER1_init();
@@ -76,8 +84,8 @@ int main(void)
 		DIO_digitalWrite(PIN_A0, curMotion == forward);
 		DIO_digitalWrite(PIN_A1, curMotion == backward);
 		
-		DIO_digitalWrite(PIN_A2, curRotation == right);
-		DIO_digitalWrite(PIN_A3, curRotation == left);
+		DIO_digitalWrite(PIN_A2, curRotation == right && curMotion != stop);
+		DIO_digitalWrite(PIN_A3, curRotation == left && curMotion != stop);
 		
 		
 		
