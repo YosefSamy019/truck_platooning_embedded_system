@@ -55,7 +55,7 @@ void main(){
 	UART_init();
 	TIMER0_setDutyCycle(30);
 	TIMER1_init();
-	TIMER2_init();
+	//TIMER2_init();
 	
 	SPI_setCallback(SPI_receive);
 	
