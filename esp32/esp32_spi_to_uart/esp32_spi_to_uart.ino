@@ -37,6 +37,20 @@ void loop() {
   //if(Serial.read()=='f'){
    // Serial.println("gggggg");
  // }
+
+/*
+{
+  static int i=0;
+  char arr[] = {'F','R','L','N','S'};
+  digitalWrite(SPI_CS_PIN, LOW); 
+  Serial.print(arr[(i) % 5]);// Select the slave
+    SPI.transfer(arr[(i++) % 5]);
+    digitalWrite(SPI_CS_PIN, HIGH); // Deselect the slave
+    delay(2000);
+  return ;
+}*/
+
+
   if (Serial.available() > 0) {
     uint8_t data = Serial.read();
     Serial.println(data);

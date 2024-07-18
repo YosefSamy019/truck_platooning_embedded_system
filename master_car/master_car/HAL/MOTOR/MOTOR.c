@@ -54,52 +54,52 @@ static void MOTOR_control(void) {
 		case forward:
 		switch (currentRotation) {
 			case left:
-			DIO_pinMode(IN1, HIGH);
-			DIO_pinMode(IN2, LOW);
-			DIO_pinMode(IN3, LOW);
-			DIO_pinMode(IN4, LOW);
+			DIO_digitalWrite(IN1, LOW);
+			DIO_digitalWrite(IN2, LOW);
+			DIO_digitalWrite(IN3, LOW);
+			DIO_digitalWrite(IN4, HIGH);
 			break;
 			case right:
-			DIO_pinMode(IN1, LOW);
-			DIO_pinMode(IN2, LOW);
-			DIO_pinMode(IN3, HIGH);
-			DIO_pinMode(IN4, LOW);
+			DIO_digitalWrite(IN1, LOW);
+			DIO_digitalWrite(IN2, HIGH);
+			DIO_digitalWrite(IN3, LOW);
+			DIO_digitalWrite(IN4, LOW);
 			break;
 			case noRotate:
-			DIO_pinMode(IN1, HIGH);
-			DIO_pinMode(IN2, LOW);
-			DIO_pinMode(IN3, HIGH);
-			DIO_pinMode(IN4, LOW);
+			DIO_digitalWrite(IN1, LOW);
+			DIO_digitalWrite(IN2, HIGH);
+			DIO_digitalWrite(IN3, LOW);
+			DIO_digitalWrite(IN4, HIGH);
 			break;
 		}
 		break;
 		case backward:
 		switch (currentRotation) {
 			case right:
-			DIO_pinMode(IN1, LOW);
-			DIO_pinMode(IN2, LOW);
-			DIO_pinMode(IN3, LOW);
-			DIO_pinMode(IN4, HIGH);
+			DIO_digitalWrite(IN1, LOW);
+			DIO_digitalWrite(IN2, LOW);
+			DIO_digitalWrite(IN3, HIGH);
+			DIO_digitalWrite(IN4, LOW);
 			break;
 			case left:
-			DIO_pinMode(IN1, LOW);
-			DIO_pinMode(IN2, HIGH);
-			DIO_pinMode(IN3, LOW);
-			DIO_pinMode(IN4, LOW);
+			DIO_digitalWrite(IN1, HIGH);
+			DIO_digitalWrite(IN2, LOW);
+			DIO_digitalWrite(IN3, LOW);
+			DIO_digitalWrite(IN4, LOW);
 			break;
 			case noRotate:
-			DIO_pinMode(IN1, LOW);
-			DIO_pinMode(IN2, HIGH);
-			DIO_pinMode(IN3, LOW);
-			DIO_pinMode(IN4, HIGH);
+			DIO_digitalWrite(IN1, HIGH);
+			DIO_digitalWrite(IN2, LOW);
+			DIO_digitalWrite(IN3, HIGH);
+			DIO_digitalWrite(IN4, LOW);
 			break;
 		}
 		break;
 		case stop:
-		DIO_pinMode(IN1, LOW);
-		DIO_pinMode(IN2, LOW);
-		DIO_pinMode(IN3, LOW);
-		DIO_pinMode(IN4, LOW);
+		DIO_digitalWrite(IN1, LOW);
+		DIO_digitalWrite(IN2, LOW);
+		DIO_digitalWrite(IN3, LOW);
+		DIO_digitalWrite(IN4, LOW);
 		break;
 	}
 }

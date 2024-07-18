@@ -31,33 +31,37 @@
 #define C_NO_ROTATE 'N'
 
 enum motion curMotion = stop;
-enum motion curRotate = noRotate;
+enum rotation curRotate = noRotate;
 
 void SPI_receive(uint8 c);
 
 void main(){
-		//leds
-		DIO_pinMode(PIN_A0,OUTPUT);
-		DIO_pinMode(PIN_A1,OUTPUT);
-		DIO_pinMode(PIN_A2,OUTPUT);
-		DIO_pinMode(PIN_A3,OUTPUT);
+
 	
-		DIO_digitalWrite(PIN_A0, HIGH);
-		DIO_digitalWrite(PIN_A1, HIGH);
-		
-		DIO_digitalWrite(PIN_A2,HIGH);
-		DIO_digitalWrite(PIN_A3,HIGH);
-	_delay_ms(1000);
-	
+		MOTOR_init();
+
 	TIMER0_init();
 	GI_voidEnable();
 	SPI_init();
 	UART_init();
 	TIMER0_setDutyCycle(30);
-	TIMER1_init();
+	//TIMER1_init();
 	//TIMER2_init();
 	
 	SPI_setCallback(SPI_receive);
+	
+			//leds
+			DIO_pinMode(PIN_A0,OUTPUT);
+			DIO_pinMode(PIN_A1,OUTPUT);
+			DIO_pinMode(PIN_A2,OUTPUT);
+			DIO_pinMode(PIN_A3,OUTPUT);
+			
+			DIO_digitalWrite(PIN_A0, HIGH);
+			DIO_digitalWrite(PIN_A1, HIGH);
+			
+			DIO_digitalWrite(PIN_A2,HIGH);
+			DIO_digitalWrite(PIN_A3,HIGH);
+			_delay_ms(1000);
 	
 	while(1){
 		MOTOR_setMotion(curMotion);
@@ -76,7 +80,8 @@ void main(){
 }
 
 void SPI_receive(uint8 c){
-	if(c == C_FORWARD || c == (C_FORWARD + 32) ){
+	
+	if(c == C_FORWARD || c == (C_FORWARD + 32) ) {
 		curMotion = forward;
 	}
 	else if(c == C_BACKWARD || c == (C_BACKWARD + 32)){
@@ -88,13 +93,17 @@ void SPI_receive(uint8 c){
 	
 	else if(c == C_RIGHT || c == (C_RIGHT + 32)){
 		curRotate = right;
+		
 	}else if(c == C_LEFT || c == (C_LEFT + 32)){
 		curRotate = left;
+		
 	}else if(c == C_NO_ROTATE || c == (C_NO_ROTATE + 32)){
 		curRotate = noRotate;
+		
 	}else{
 		//nothig
 	}
+	
 	uint8 arr[] = {c,'\0'};
 	UART_sendStr(arr);
 }
