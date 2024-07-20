@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 000001b8  00000000  00000000  00000b64  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001781  00000000  00000000  00000d1c  2**0
+  6 .debug_info   00001797  00000000  00000000  00000d1c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000c72  00000000  00000000  0000249d  2**0
+  7 .debug_abbrev 00000c7f  00000000  00000000  000024b3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000e3b  00000000  00000000  0000310f  2**0
+  8 .debug_line   00000e3b  00000000  00000000  00003132  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000003a4  00000000  00000000  00003f4c  2**2
+  9 .debug_frame  000003a4  00000000  00000000  00003f70  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000006d0  00000000  00000000  000042f0  2**0
+ 10 .debug_str    000006d6  00000000  00000000  00004314  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000098a  00000000  00000000  000049c0  2**0
+ 11 .debug_loc    0000098a  00000000  00000000  000049ea  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000128  00000000  00000000  0000534a  2**0
+ 12 .debug_ranges 00000128  00000000  00000000  00005374  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1077,17 +1077,17 @@ ISR(TIMER1_COMPA_vect) {
  712:	ff 93       	push	r31
 		static uint32 counter = 0;
 		counter++;
- 714:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <counter.1639>
- 718:	90 91 69 00 	lds	r25, 0x0069	; 0x800069 <counter.1639+0x1>
- 71c:	a0 91 6a 00 	lds	r26, 0x006A	; 0x80006a <counter.1639+0x2>
- 720:	b0 91 6b 00 	lds	r27, 0x006B	; 0x80006b <counter.1639+0x3>
+ 714:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <counter.1640>
+ 718:	90 91 69 00 	lds	r25, 0x0069	; 0x800069 <counter.1640+0x1>
+ 71c:	a0 91 6a 00 	lds	r26, 0x006A	; 0x80006a <counter.1640+0x2>
+ 720:	b0 91 6b 00 	lds	r27, 0x006B	; 0x80006b <counter.1640+0x3>
  724:	01 96       	adiw	r24, 0x01	; 1
  726:	a1 1d       	adc	r26, r1
  728:	b1 1d       	adc	r27, r1
- 72a:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <counter.1639>
- 72e:	90 93 69 00 	sts	0x0069, r25	; 0x800069 <counter.1639+0x1>
- 732:	a0 93 6a 00 	sts	0x006A, r26	; 0x80006a <counter.1639+0x2>
- 736:	b0 93 6b 00 	sts	0x006B, r27	; 0x80006b <counter.1639+0x3>
+ 72a:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <counter.1640>
+ 72e:	90 93 69 00 	sts	0x0069, r25	; 0x800069 <counter.1640+0x1>
+ 732:	a0 93 6a 00 	sts	0x006A, r26	; 0x80006a <counter.1640+0x2>
+ 736:	b0 93 6b 00 	sts	0x006B, r27	; 0x80006b <counter.1640+0x3>
 
 		if(counter == TIMER2_MAX_COUNT){
  73a:	01 97       	sbiw	r24, 0x01	; 1
@@ -1095,10 +1095,10 @@ ISR(TIMER1_COMPA_vect) {
  73e:	b1 05       	cpc	r27, r1
  740:	81 f4       	brne	.+32     	; 0x762 <__vector_3+0x70>
 			counter = 0;
- 742:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <counter.1639>
- 746:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <counter.1639+0x1>
- 74a:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <counter.1639+0x2>
- 74e:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <counter.1639+0x3>
+ 742:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <counter.1640>
+ 746:	10 92 69 00 	sts	0x0069, r1	; 0x800069 <counter.1640+0x1>
+ 74a:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <counter.1640+0x2>
+ 74e:	10 92 6b 00 	sts	0x006B, r1	; 0x80006b <counter.1640+0x3>
 			TCNT2_REG = TIMER2_PRELOAD_VAL;
  752:	14 bc       	out	0x24, r1	; 36
 			
@@ -1134,17 +1134,17 @@ ISR(TIMER1_COMPA_vect) {
 00000784 <UART_init>:
 }
 
-void UART_onReceive(void (*ptr2fun)(uint8 c)) {
+void UART_onReceive(void (*ptr2fun)(uint8)) {
 	UART_receiveCallback = ptr2fun;
 	// Enable the UART Receive Complete interrupt
 	UCSRB |= (1 << RXCIE);
- 784:	10 bc       	out	0x20, r1	; 32
- 786:	87 e6       	ldi	r24, 0x67	; 103
- 788:	89 b9       	out	0x09, r24	; 9
- 78a:	88 e1       	ldi	r24, 0x18	; 24
- 78c:	8a b9       	out	0x0a, r24	; 10
- 78e:	86 e0       	ldi	r24, 0x06	; 6
- 790:	80 bd       	out	0x20, r24	; 32
+ 784:	88 e1       	ldi	r24, 0x18	; 24
+ 786:	8a b9       	out	0x0a, r24	; 10
+ 788:	86 e0       	ldi	r24, 0x06	; 6
+ 78a:	80 bd       	out	0x20, r24	; 32
+ 78c:	10 bc       	out	0x20, r1	; 32
+ 78e:	87 e6       	ldi	r24, 0x67	; 103
+ 790:	89 b9       	out	0x09, r24	; 9
  792:	08 95       	ret
 
 00000794 <UART_sendStr>:
@@ -1191,7 +1191,7 @@ ISR(USART_RXC_vect) {
  7da:	f0 91 6f 00 	lds	r31, 0x006F	; 0x80006f <UART_receiveCallback+0x1>
  7de:	30 97       	sbiw	r30, 0x00	; 0
  7e0:	11 f0       	breq	.+4      	; 0x7e6 <__vector_11+0x32>
-		uint8 receivedChar = UDR;  // Read the received data
+		u8 receivedChar = (u8)UDR;  // Read the received data
  7e2:	8c b1       	in	r24, 0x0c	; 12
 		UART_receiveCallback(receivedChar);  // Call the user-defined function
  7e4:	09 95       	icall

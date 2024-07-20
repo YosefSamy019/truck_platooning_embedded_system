@@ -619,7 +619,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x150c
+.debug_info     0x00000000     0x1522
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x52e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
  .debug_info    0x0000052e      0x56b HAL/MOTOR/MOTOR.o
@@ -628,9 +628,9 @@ END GROUP
  .debug_info    0x000010aa       0xae MCAL/GI/GI_Program.o
  .debug_info    0x00001158      0x10f MCAL/TIMER_0/Timer0_PWM.o
  .debug_info    0x00001267      0x112 MCAL/TIMER_1/timer1.o
- .debug_info    0x00001379      0x193 MCAL/UART/UART_Bluetooth.o
+ .debug_info    0x00001379      0x1a9 MCAL/UART/UART_Bluetooth.o
 
-.debug_abbrev   0x00000000      0xac4
+.debug_abbrev   0x00000000      0xad1
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4e7 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
  .debug_abbrev  0x000004e7       0xe8 HAL/MOTOR/MOTOR.o
@@ -639,7 +639,7 @@ END GROUP
  .debug_abbrev  0x00000829       0x46 MCAL/GI/GI_Program.o
  .debug_abbrev  0x0000086f       0xb4 MCAL/TIMER_0/Timer0_PWM.o
  .debug_abbrev  0x00000923       0xb6 MCAL/TIMER_1/timer1.o
- .debug_abbrev  0x000009d9       0xeb MCAL/UART/UART_Bluetooth.o
+ .debug_abbrev  0x000009d9       0xf8 MCAL/UART/UART_Bluetooth.o
 
 .debug_line     0x00000000      0xc5d
  *(.debug_line .debug_line.* .debug_line_end)
@@ -662,7 +662,7 @@ END GROUP
  .debug_frame   0x00000154       0x8c MCAL/TIMER_1/timer1.o
  .debug_frame   0x000001e0       0x9c MCAL/UART/UART_Bluetooth.o
 
-.debug_str      0x00000000      0x63d
+.debug_str      0x00000000      0x643
  *(.debug_str)
  .debug_str     0x00000000      0x1af C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
  .debug_str     0x000001af      0x25a HAL/MOTOR/MOTOR.o
@@ -677,8 +677,8 @@ END GROUP
                                 0x203 (size before relaxing)
  .debug_str     0x000005aa       0x35 MCAL/TIMER_1/timer1.o
                                 0x20a (size before relaxing)
- .debug_str     0x000005df       0x5e MCAL/UART/UART_Bluetooth.o
-                                0x22b (size before relaxing)
+ .debug_str     0x000005df       0x64 MCAL/UART/UART_Bluetooth.o
+                                0x231 (size before relaxing)
 
 .debug_loc      0x00000000      0x854
  *(.debug_loc)

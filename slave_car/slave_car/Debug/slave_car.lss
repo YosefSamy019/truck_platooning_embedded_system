@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000158  00000000  00000000  00000ac0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000150c  00000000  00000000  00000c18  2**0
+  6 .debug_info   00001522  00000000  00000000  00000c18  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000ac4  00000000  00000000  00002124  2**0
+  7 .debug_abbrev 00000ad1  00000000  00000000  0000213a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000c5d  00000000  00000000  00002be8  2**0
+  8 .debug_line   00000c5d  00000000  00000000  00002c0b  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000027c  00000000  00000000  00003848  2**2
+  9 .debug_frame  0000027c  00000000  00000000  00003868  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000063d  00000000  00000000  00003ac4  2**0
+ 10 .debug_str    00000643  00000000  00000000  00003ae4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000854  00000000  00000000  00004101  2**0
+ 11 .debug_loc    00000854  00000000  00000000  00004127  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000e8  00000000  00000000  00004955  2**0
+ 12 .debug_ranges 000000e8  00000000  00000000  0000497b  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1149,18 +1149,18 @@ ISR(TIMER1_COMPA_vect) {
 		i++;
 	}
 }
- 6ec:	10 bc       	out	0x20, r1	; 32
- 6ee:	87 e6       	ldi	r24, 0x67	; 103
- 6f0:	89 b9       	out	0x09, r24	; 9
- 6f2:	88 e1       	ldi	r24, 0x18	; 24
- 6f4:	8a b9       	out	0x0a, r24	; 10
- 6f6:	86 e0       	ldi	r24, 0x06	; 6
- 6f8:	80 bd       	out	0x20, r24	; 32
+ 6ec:	88 e1       	ldi	r24, 0x18	; 24
+ 6ee:	8a b9       	out	0x0a, r24	; 10
+ 6f0:	86 e0       	ldi	r24, 0x06	; 6
+ 6f2:	80 bd       	out	0x20, r24	; 32
+ 6f4:	10 bc       	out	0x20, r1	; 32
+ 6f6:	87 e6       	ldi	r24, 0x67	; 103
+ 6f8:	89 b9       	out	0x09, r24	; 9
  6fa:	08 95       	ret
 
 000006fc <UART_onReceive>:
 
-void UART_onReceive(void (*ptr2fun)(uint8 c)) {
+void UART_onReceive(void (*ptr2fun)(u8)) {
 	UART_receiveCallback = ptr2fun;
  6fc:	90 93 6a 00 	sts	0x006A, r25	; 0x80006a <UART_receiveCallback+0x1>
  700:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <UART_receiveCallback>
@@ -1197,7 +1197,7 @@ ISR(USART_RXC_vect) {
  732:	f0 91 6a 00 	lds	r31, 0x006A	; 0x80006a <UART_receiveCallback+0x1>
  736:	30 97       	sbiw	r30, 0x00	; 0
  738:	11 f0       	breq	.+4      	; 0x73e <__vector_11+0x32>
-		uint8 receivedChar = UDR;  // Read the received data
+		u8 receivedChar = (u8)UDR;  // Read the received data
  73a:	8c b1       	in	r24, 0x0c	; 12
 		UART_receiveCallback(receivedChar);  // Call the user-defined function
  73c:	09 95       	icall

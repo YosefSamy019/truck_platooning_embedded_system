@@ -521,7 +521,7 @@ END GROUP
  .bss.callback  0x00800064        0x2 MCAL/SPI/SPI_interface.o
  .bss.timer1_callback
                 0x00800066        0x2 MCAL/TIMER_1/timer1.o
- .bss.counter.1639
+ .bss.counter.1640
                 0x00800068        0x4 MCAL/TIMER_2/TIMER2_interface.o
  .bss.callback  0x0080006c        0x2 MCAL/TIMER_2/TIMER2_interface.o
  .bss.UART_receiveCallback
@@ -633,7 +633,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1781
+.debug_info     0x00000000     0x1797
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x52e C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
  .debug_info    0x0000052e      0x56b HAL/MOTOR/MOTOR.o
@@ -644,9 +644,9 @@ END GROUP
  .debug_info    0x0000129f      0x10f MCAL/TIMER_0/Timer0_PWM.o
  .debug_info    0x000013ae      0x112 MCAL/TIMER_1/timer1.o
  .debug_info    0x000014c0      0x12e MCAL/TIMER_2/TIMER2_interface.o
- .debug_info    0x000015ee      0x193 MCAL/UART/UART_Bluetooth.o
+ .debug_info    0x000015ee      0x1a9 MCAL/UART/UART_Bluetooth.o
 
-.debug_abbrev   0x00000000      0xc72
+.debug_abbrev   0x00000000      0xc7f
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4e7 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
  .debug_abbrev  0x000004e7       0xe8 HAL/MOTOR/MOTOR.o
@@ -657,7 +657,7 @@ END GROUP
  .debug_abbrev  0x0000096a       0xb4 MCAL/TIMER_0/Timer0_PWM.o
  .debug_abbrev  0x00000a1e       0xb6 MCAL/TIMER_1/timer1.o
  .debug_abbrev  0x00000ad4       0xb3 MCAL/TIMER_2/TIMER2_interface.o
- .debug_abbrev  0x00000b87       0xeb MCAL/UART/UART_Bluetooth.o
+ .debug_abbrev  0x00000b87       0xf8 MCAL/UART/UART_Bluetooth.o
 
 .debug_line     0x00000000      0xe3b
  *(.debug_line .debug_line.* .debug_line_end)
@@ -684,7 +684,7 @@ END GROUP
  .debug_frame   0x0000027c       0x8c MCAL/TIMER_2/TIMER2_interface.o
  .debug_frame   0x00000308       0x9c MCAL/UART/UART_Bluetooth.o
 
-.debug_str      0x00000000      0x6d0
+.debug_str      0x00000000      0x6d6
  *(.debug_str)
  .debug_str     0x00000000      0x1af C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega16/avr5/crtatmega16.o
  .debug_str     0x000001af      0x25c HAL/MOTOR/MOTOR.o
@@ -703,8 +703,8 @@ END GROUP
                                 0x20c (size before relaxing)
  .debug_str     0x0000061b       0x55 MCAL/TIMER_2/TIMER2_interface.o
                                 0x218 (size before relaxing)
- .debug_str     0x00000670       0x60 MCAL/UART/UART_Bluetooth.o
-                                0x22d (size before relaxing)
+ .debug_str     0x00000670       0x66 MCAL/UART/UART_Bluetooth.o
+                                0x233 (size before relaxing)
 
 .debug_loc      0x00000000      0x98a
  *(.debug_loc)

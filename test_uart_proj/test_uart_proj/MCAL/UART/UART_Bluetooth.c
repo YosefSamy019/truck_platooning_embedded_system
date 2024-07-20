@@ -3,19 +3,28 @@
 #define F_CPU 16000000UL
 
 #define BAUD 9600
-#define MYUBRR F_CPU/16/BAUD-1
+#define MYUBRR (F_CPU/16/BAUD -1)
 
 volatile void (*UART_receiveCallback)(u8 c) = 0;
 
 void UART_init(void) {
 	unsigned int ubrr = MYUBRR;
+	unsigned int ubrrH = (u8)(ubrr >> 8);
+	
+		// Enable receiver and transmitter
+		UCSRB = (1 << RXEN) | (1 << TXEN);
+	
+		// Set frame format: 8 data bits, 1 stop bit
+		UCSRC = (1 << UCSZ1) | (1 << UCSZ0);
+	
 	// Set baud rate
-	UBRRH = (u8)(ubrr >> 8);
+	UBRRH = (u8)ubrrH;
 	UBRRL = (u8)ubrr;
-	// Enable receiver and transmitter
-	UCSRB = (1 << RXEN) | (1 << TXEN);
-	// Set frame format: 8 data bits, 1 stop bit
-	UCSRC = (1 << UCSZ1) | (1 << UCSZ0);
+	
+
+		
+
+
 }
 
 void UART_sendStr(u8 str[]) {
@@ -35,7 +44,7 @@ void UART_onReceive(void (*ptr2fun)(u8)) {
 
 ISR(USART_RXC_vect) {
 	if (UART_receiveCallback) {
-		u8 receivedChar = UDR;  // Read the received data
+		u8 receivedChar = (u8)UDR;  // Read the received data
 		UART_receiveCallback(receivedChar);  // Call the user-defined function
 	}
 }

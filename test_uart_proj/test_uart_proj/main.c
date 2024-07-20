@@ -4,7 +4,12 @@
  * Created: 2024-07-17 7:08:56 PM
  * Author : asus
  */ 
-#define  F_CPU 16000000UL
+
+#define F_CPU 16000000UL
+
+#define BAUD 9600
+#define MYUBRR (F_CPU/16/BAUD -1)
+
 
 #include <avr/io.h>
 #include <avr/delay.h>
@@ -19,11 +24,15 @@
 
 
 void uartISR(u8 c){
-	SET_BIT(PORTD,3);
+	/*SET_BIT(PORTD,3);
 	lcd_send_data('$');
 	lcd_send_data(c);
 	_delay_ms(10);
-	CLEAR_BIT(PORTD,3);
+	CLEAR_BIT(PORTD,3);*/
+	
+	lcd_set_cursor(0,0);
+	lcd_clear();
+	lcd_send_data(c);
 }
 
 int main(void)

@@ -11,8 +11,8 @@
 #include <SPI.h>
 
 // UART pins
-#define TXD_PIN 17
-#define RXD_PIN 16
+#define TXD2_PIN 17
+#define RXD2_PIN 16
 
 // SPI pins
 #define SPI_MOSI_PIN 23
@@ -20,9 +20,15 @@
 #define SPI_SCK_PIN 18
 #define SPI_CS_PIN 5
 
+#define LED_TEST 4
+
 void setup() {
+  pinMode( LED_TEST, OUTPUT);
+
+
   // Configure UART
-  Serial.begin(9600, SERIAL_8N1);
+  Serial.begin(9600);
+  Serial2.begin(9600, SERIAL_8N1, RXD2_PIN, TXD2_PIN);
 
   // Configure SPI
   SPI.begin();
@@ -30,26 +36,24 @@ void setup() {
   SPI.setDataMode(SPI_MODE0);
   pinMode(SPI_CS_PIN, OUTPUT);
   digitalWrite(SPI_CS_PIN, HIGH); // Deselect the slave
+
+  digitalWrite(LED_TEST, HIGH);
+  delay(1000);
+  digitalWrite(LED_TEST, LOW);
 }
 
 void loop() {
-  // Read character from UART
-  //if(Serial.read()=='f'){
-   // Serial.println("gggggg");
- // }
 
-/*
-{
-  static int i=0;
-  char arr[] = {'F','R','L','N','S'};
-  digitalWrite(SPI_CS_PIN, LOW); 
-  Serial.print(arr[(i) % 5]);// Select the slave
-    SPI.transfer(arr[(i++) % 5]);
+  if (Serial2.available() > 0) {
+    uint8_t data = Serial2.read();
+    Serial.println(data);
+    // Send character to SPI
+    digitalWrite(SPI_CS_PIN, LOW); // Select the slave
+    SPI.transfer(data);
     digitalWrite(SPI_CS_PIN, HIGH); // Deselect the slave
-    delay(2000);
-  return ;
-}*/
 
+      digitalWrite(LED_TEST, 1 ^ digitalRead(LED_TEST));
+  }
 
   if (Serial.available() > 0) {
     uint8_t data = Serial.read();
@@ -58,5 +62,7 @@ void loop() {
     digitalWrite(SPI_CS_PIN, LOW); // Select the slave
     SPI.transfer(data);
     digitalWrite(SPI_CS_PIN, HIGH); // Deselect the slave
+
+    digitalWrite(LED_TEST, 1 ^ digitalRead(LED_TEST));
   }
 }

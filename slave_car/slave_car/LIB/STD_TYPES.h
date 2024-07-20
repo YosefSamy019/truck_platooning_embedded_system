@@ -10,6 +10,7 @@
 
 #define NULL				((void*) 0)
 
+typedef unsigned char		u8;
 typedef unsigned char		uint8;
 typedef signed char			sint8;
 
