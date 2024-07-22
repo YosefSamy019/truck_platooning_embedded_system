@@ -49,6 +49,19 @@ int main(void)
 		i++;
 	}
 	
+	GI_voidEnable();
+	TIMER0_init();
+	TIMER1_init();
+	UART_init();
+	MOTOR_init();
+	
+	MOTOR_setDutyCycle(30);
+	MOTOR_setMotion(curMotion);
+	MOTOR_setRotate(curRotation);
+	
+	TIMER1_setCallBack(timer1_callback);
+	UART_onReceive(uart_receive);
+	
 	//leds
 	DIO_pinMode(PIN_A0,OUTPUT);
 	DIO_pinMode(PIN_A1,OUTPUT);
@@ -63,18 +76,7 @@ int main(void)
 	_delay_ms(1000);
 	
 
-	GI_voidEnable();
-	TIMER0_init();
-	TIMER1_init();
-	UART_init();
-	MOTOR_init();
 	
-	MOTOR_setDutyCycle(30);
-	MOTOR_setMotion(curMotion);
-	MOTOR_setRotate(curRotation);
-	
-	TIMER1_setCallBack(timer1_callback);
-	UART_onReceive(uart_receive);
 	
     while (1) 
     {

@@ -22,9 +22,10 @@
 
 #define LED_TEST 4
 
+void sendChar(uint8_t c);
+
 void setup() {
   pinMode( LED_TEST, OUTPUT);
-
 
   // Configure UART
   Serial.begin(9600);
@@ -37,32 +38,33 @@ void setup() {
   pinMode(SPI_CS_PIN, OUTPUT);
   digitalWrite(SPI_CS_PIN, HIGH); // Deselect the slave
 
+  //Test LED connected with ESP32 in car
   digitalWrite(LED_TEST, HIGH);
   delay(1000);
   digitalWrite(LED_TEST, LOW);
 }
 
 void loop() {
-
   if (Serial2.available() > 0) {
     uint8_t data = Serial2.read();
-    Serial.println(data);
-    // Send character to SPI
-    digitalWrite(SPI_CS_PIN, LOW); // Select the slave
-    SPI.transfer(data);
-    digitalWrite(SPI_CS_PIN, HIGH); // Deselect the slave
-
-      digitalWrite(LED_TEST, 1 ^ digitalRead(LED_TEST));
+   sendChar(data);
   }
 
   if (Serial.available() > 0) {
     uint8_t data = Serial.read();
+   sendChar(data);
+  }
+}
+
+
+void sendChar(uint8_t data){
     Serial.println(data);
+
     // Send character to SPI
     digitalWrite(SPI_CS_PIN, LOW); // Select the slave
     SPI.transfer(data);
     digitalWrite(SPI_CS_PIN, HIGH); // Deselect the slave
 
+    //toggle led
     digitalWrite(LED_TEST, 1 ^ digitalRead(LED_TEST));
-  }
 }

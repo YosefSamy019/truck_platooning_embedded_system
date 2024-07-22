@@ -8,8 +8,7 @@
 
 void TIMER0_init(void){
 	DIO_pinMode(PIN_B3,OUTPUT);
-	//DIO_pinMode(PIN_B4,OUTPUT);
-	//DIO_digitalWrite(PIN_B4,HIGH);
+
 	//SET TO FAST PWM
 	SET_BIT(TCCR0,WGM00);
 	SET_BIT(TCCR0,WGM01);

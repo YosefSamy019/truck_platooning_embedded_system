@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000158  00000000  00000000  00000ac0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001522  00000000  00000000  00000c18  2**0
+  6 .debug_info   00001524  00000000  00000000  00000c18  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000ad1  00000000  00000000  0000213a  2**0
+  7 .debug_abbrev 00000ada  00000000  00000000  0000213c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000c5d  00000000  00000000  00002c0b  2**0
+  8 .debug_line   00000c5d  00000000  00000000  00002c16  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000027c  00000000  00000000  00003868  2**2
+  9 .debug_frame  0000027c  00000000  00000000  00003874  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000643  00000000  00000000  00003ae4  2**0
+ 10 .debug_str    00000643  00000000  00000000  00003af0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000854  00000000  00000000  00004127  2**0
+ 11 .debug_loc    0000080c  00000000  00000000  00004133  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000e8  00000000  00000000  0000497b  2**0
+ 12 .debug_ranges 000000e8  00000000  00000000  0000493f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -121,60 +121,60 @@ static void MOTOR_control(void) {
   b2:	19 f1       	breq	.+70     	; 0xfa <MOTOR_control+0x68>
   b4:	08 95       	ret
 			case left:
-			DIO_pinMode(IN1, HIGH);
-  b6:	61 e0       	ldi	r22, 0x01	; 1
-  b8:	84 ec       	ldi	r24, 0xC4	; 196
-  ba:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN2, LOW);
+			DIO_digitalWrite(IN1, LOW);
+  b6:	60 e0       	ldi	r22, 0x00	; 0
+  b8:	80 ec       	ldi	r24, 0xC0	; 192
+  ba:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN2, LOW);
   be:	60 e0       	ldi	r22, 0x00	; 0
-  c0:	85 ec       	ldi	r24, 0xC5	; 197
-  c2:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN3, LOW);
+  c0:	81 ec       	ldi	r24, 0xC1	; 193
+  c2:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN3, LOW);
   c6:	60 e0       	ldi	r22, 0x00	; 0
-  c8:	86 ec       	ldi	r24, 0xC6	; 198
-  ca:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN4, LOW);
-  ce:	60 e0       	ldi	r22, 0x00	; 0
-  d0:	87 ec       	ldi	r24, 0xC7	; 199
-  d2:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+  c8:	84 ed       	ldi	r24, 0xD4	; 212
+  ca:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN4, HIGH);
+  ce:	61 e0       	ldi	r22, 0x01	; 1
+  d0:	85 ed       	ldi	r24, 0xD5	; 213
+  d2:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 			break;
   d6:	08 95       	ret
 			case right:
-			DIO_pinMode(IN1, LOW);
+			DIO_digitalWrite(IN1, LOW);
   d8:	60 e0       	ldi	r22, 0x00	; 0
-  da:	84 ec       	ldi	r24, 0xC4	; 196
-  dc:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN2, LOW);
-  e0:	60 e0       	ldi	r22, 0x00	; 0
-  e2:	85 ec       	ldi	r24, 0xC5	; 197
-  e4:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN3, HIGH);
-  e8:	61 e0       	ldi	r22, 0x01	; 1
-  ea:	86 ec       	ldi	r24, 0xC6	; 198
-  ec:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN4, LOW);
+  da:	80 ec       	ldi	r24, 0xC0	; 192
+  dc:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN2, HIGH);
+  e0:	61 e0       	ldi	r22, 0x01	; 1
+  e2:	81 ec       	ldi	r24, 0xC1	; 193
+  e4:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN3, LOW);
+  e8:	60 e0       	ldi	r22, 0x00	; 0
+  ea:	84 ed       	ldi	r24, 0xD4	; 212
+  ec:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN4, LOW);
   f0:	60 e0       	ldi	r22, 0x00	; 0
-  f2:	87 ec       	ldi	r24, 0xC7	; 199
-  f4:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+  f2:	85 ed       	ldi	r24, 0xD5	; 213
+  f4:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 			break;
   f8:	08 95       	ret
 			case noRotate:
-			DIO_pinMode(IN1, HIGH);
-  fa:	61 e0       	ldi	r22, 0x01	; 1
-  fc:	84 ec       	ldi	r24, 0xC4	; 196
-  fe:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN2, LOW);
- 102:	60 e0       	ldi	r22, 0x00	; 0
- 104:	85 ec       	ldi	r24, 0xC5	; 197
- 106:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN3, HIGH);
- 10a:	61 e0       	ldi	r22, 0x01	; 1
- 10c:	86 ec       	ldi	r24, 0xC6	; 198
- 10e:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN4, LOW);
- 112:	60 e0       	ldi	r22, 0x00	; 0
- 114:	87 ec       	ldi	r24, 0xC7	; 199
- 116:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+			DIO_digitalWrite(IN1, LOW);
+  fa:	60 e0       	ldi	r22, 0x00	; 0
+  fc:	80 ec       	ldi	r24, 0xC0	; 192
+  fe:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN2, HIGH);
+ 102:	61 e0       	ldi	r22, 0x01	; 1
+ 104:	81 ec       	ldi	r24, 0xC1	; 193
+ 106:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN3, LOW);
+ 10a:	60 e0       	ldi	r22, 0x00	; 0
+ 10c:	84 ed       	ldi	r24, 0xD4	; 212
+ 10e:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN4, HIGH);
+ 112:	61 e0       	ldi	r22, 0x01	; 1
+ 114:	85 ed       	ldi	r24, 0xD5	; 213
+ 116:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 			break;
  11a:	08 95       	ret
 		}
@@ -189,81 +189,81 @@ static void MOTOR_control(void) {
  128:	19 f1       	breq	.+70     	; 0x170 <MOTOR_control+0xde>
  12a:	08 95       	ret
 			case right:
-			DIO_pinMode(IN1, LOW);
+			DIO_digitalWrite(IN1, LOW);
  12c:	60 e0       	ldi	r22, 0x00	; 0
- 12e:	84 ec       	ldi	r24, 0xC4	; 196
- 130:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN2, LOW);
+ 12e:	80 ec       	ldi	r24, 0xC0	; 192
+ 130:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN2, LOW);
  134:	60 e0       	ldi	r22, 0x00	; 0
- 136:	85 ec       	ldi	r24, 0xC5	; 197
- 138:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN3, LOW);
- 13c:	60 e0       	ldi	r22, 0x00	; 0
- 13e:	86 ec       	ldi	r24, 0xC6	; 198
- 140:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN4, HIGH);
- 144:	61 e0       	ldi	r22, 0x01	; 1
- 146:	87 ec       	ldi	r24, 0xC7	; 199
- 148:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+ 136:	81 ec       	ldi	r24, 0xC1	; 193
+ 138:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN3, HIGH);
+ 13c:	61 e0       	ldi	r22, 0x01	; 1
+ 13e:	84 ed       	ldi	r24, 0xD4	; 212
+ 140:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN4, LOW);
+ 144:	60 e0       	ldi	r22, 0x00	; 0
+ 146:	85 ed       	ldi	r24, 0xD5	; 213
+ 148:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 			break;
  14c:	08 95       	ret
 			case left:
-			DIO_pinMode(IN1, LOW);
- 14e:	60 e0       	ldi	r22, 0x00	; 0
- 150:	84 ec       	ldi	r24, 0xC4	; 196
- 152:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN2, HIGH);
- 156:	61 e0       	ldi	r22, 0x01	; 1
- 158:	85 ec       	ldi	r24, 0xC5	; 197
- 15a:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN3, LOW);
+			DIO_digitalWrite(IN1, HIGH);
+ 14e:	61 e0       	ldi	r22, 0x01	; 1
+ 150:	80 ec       	ldi	r24, 0xC0	; 192
+ 152:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN2, LOW);
+ 156:	60 e0       	ldi	r22, 0x00	; 0
+ 158:	81 ec       	ldi	r24, 0xC1	; 193
+ 15a:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN3, LOW);
  15e:	60 e0       	ldi	r22, 0x00	; 0
- 160:	86 ec       	ldi	r24, 0xC6	; 198
- 162:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN4, LOW);
+ 160:	84 ed       	ldi	r24, 0xD4	; 212
+ 162:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN4, LOW);
  166:	60 e0       	ldi	r22, 0x00	; 0
- 168:	87 ec       	ldi	r24, 0xC7	; 199
- 16a:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+ 168:	85 ed       	ldi	r24, 0xD5	; 213
+ 16a:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 			break;
  16e:	08 95       	ret
 			case noRotate:
-			DIO_pinMode(IN1, LOW);
- 170:	60 e0       	ldi	r22, 0x00	; 0
- 172:	84 ec       	ldi	r24, 0xC4	; 196
- 174:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN2, HIGH);
- 178:	61 e0       	ldi	r22, 0x01	; 1
- 17a:	85 ec       	ldi	r24, 0xC5	; 197
- 17c:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN3, LOW);
- 180:	60 e0       	ldi	r22, 0x00	; 0
- 182:	86 ec       	ldi	r24, 0xC6	; 198
- 184:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-			DIO_pinMode(IN4, HIGH);
- 188:	61 e0       	ldi	r22, 0x01	; 1
- 18a:	87 ec       	ldi	r24, 0xC7	; 199
- 18c:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+			DIO_digitalWrite(IN1, HIGH);
+ 170:	61 e0       	ldi	r22, 0x01	; 1
+ 172:	80 ec       	ldi	r24, 0xC0	; 192
+ 174:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN2, LOW);
+ 178:	60 e0       	ldi	r22, 0x00	; 0
+ 17a:	81 ec       	ldi	r24, 0xC1	; 193
+ 17c:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN3, HIGH);
+ 180:	61 e0       	ldi	r22, 0x01	; 1
+ 182:	84 ed       	ldi	r24, 0xD4	; 212
+ 184:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+			DIO_digitalWrite(IN4, LOW);
+ 188:	60 e0       	ldi	r22, 0x00	; 0
+ 18a:	85 ed       	ldi	r24, 0xD5	; 213
+ 18c:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 			break;
  190:	08 95       	ret
 		}
 		break;
 		case stop:
-		DIO_pinMode(IN1, LOW);
+		DIO_digitalWrite(IN1, LOW);
  192:	60 e0       	ldi	r22, 0x00	; 0
- 194:	84 ec       	ldi	r24, 0xC4	; 196
- 196:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-		DIO_pinMode(IN2, LOW);
+ 194:	80 ec       	ldi	r24, 0xC0	; 192
+ 196:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+		DIO_digitalWrite(IN2, LOW);
  19a:	60 e0       	ldi	r22, 0x00	; 0
- 19c:	85 ec       	ldi	r24, 0xC5	; 197
- 19e:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-		DIO_pinMode(IN3, LOW);
+ 19c:	81 ec       	ldi	r24, 0xC1	; 193
+ 19e:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+		DIO_digitalWrite(IN3, LOW);
  1a2:	60 e0       	ldi	r22, 0x00	; 0
- 1a4:	86 ec       	ldi	r24, 0xC6	; 198
- 1a6:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-		DIO_pinMode(IN4, LOW);
+ 1a4:	84 ed       	ldi	r24, 0xD4	; 212
+ 1a6:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+		DIO_digitalWrite(IN4, LOW);
  1aa:	60 e0       	ldi	r22, 0x00	; 0
- 1ac:	87 ec       	ldi	r24, 0xC7	; 199
- 1ae:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+ 1ac:	85 ed       	ldi	r24, 0xD5	; 213
+ 1ae:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
  1b2:	08 95       	ret
 
 000001b4 <MOTOR_init>:
@@ -274,37 +274,37 @@ void MOTOR_init(void) {
 	// Set motor control pins as outputs
 	DIO_pinMode(IN1, OUTPUT);
  1b4:	61 e0       	ldi	r22, 0x01	; 1
- 1b6:	84 ec       	ldi	r24, 0xC4	; 196
+ 1b6:	80 ec       	ldi	r24, 0xC0	; 192
  1b8:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
 	DIO_pinMode(IN2, OUTPUT);
  1bc:	61 e0       	ldi	r22, 0x01	; 1
- 1be:	85 ec       	ldi	r24, 0xC5	; 197
+ 1be:	81 ec       	ldi	r24, 0xC1	; 193
  1c0:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
 	DIO_pinMode(IN3, OUTPUT);
  1c4:	61 e0       	ldi	r22, 0x01	; 1
- 1c6:	86 ec       	ldi	r24, 0xC6	; 198
+ 1c6:	84 ed       	ldi	r24, 0xD4	; 212
  1c8:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
 	DIO_pinMode(IN4, OUTPUT);
  1cc:	61 e0       	ldi	r22, 0x01	; 1
- 1ce:	87 ec       	ldi	r24, 0xC7	; 199
+ 1ce:	85 ed       	ldi	r24, 0xD5	; 213
  1d0:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
 
 	// Initialize motors to be stopped
 	DIO_digitalWrite(IN1, LOW);
  1d4:	60 e0       	ldi	r22, 0x00	; 0
- 1d6:	84 ec       	ldi	r24, 0xC4	; 196
+ 1d6:	80 ec       	ldi	r24, 0xC0	; 192
  1d8:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 	DIO_digitalWrite(IN2, LOW);
  1dc:	60 e0       	ldi	r22, 0x00	; 0
- 1de:	85 ec       	ldi	r24, 0xC5	; 197
+ 1de:	81 ec       	ldi	r24, 0xC1	; 193
  1e0:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 	DIO_digitalWrite(IN3, LOW);
  1e4:	60 e0       	ldi	r22, 0x00	; 0
- 1e6:	86 ec       	ldi	r24, 0xC6	; 198
+ 1e6:	84 ed       	ldi	r24, 0xD4	; 212
  1e8:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 	DIO_digitalWrite(IN4, LOW);
  1ec:	60 e0       	ldi	r22, 0x00	; 0
- 1ee:	87 ec       	ldi	r24, 0xC7	; 199
+ 1ee:	85 ed       	ldi	r24, 0xD5	; 213
  1f0:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
  1f4:	08 95       	ret
 
@@ -457,88 +457,88 @@ int main(void)
 		i++;
 	}
 	
+	GI_voidEnable();
+ 2a4:	0e 94 0f 03 	call	0x61e	; 0x61e <GI_voidEnable>
+	TIMER0_init();
+ 2a8:	0e 94 13 03 	call	0x626	; 0x626 <TIMER0_init>
+	TIMER1_init();
+ 2ac:	0e 94 3d 03 	call	0x67a	; 0x67a <TIMER1_init>
+	UART_init();
+ 2b0:	0e 94 76 03 	call	0x6ec	; 0x6ec <UART_init>
+	MOTOR_init();
+ 2b4:	0e 94 da 00 	call	0x1b4	; 0x1b4 <MOTOR_init>
+	
+	MOTOR_setDutyCycle(30);
+ 2b8:	8e e1       	ldi	r24, 0x1E	; 30
+ 2ba:	0e 94 fb 00 	call	0x1f6	; 0x1f6 <MOTOR_setDutyCycle>
+	MOTOR_setMotion(curMotion);
+ 2be:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <curMotion>
+ 2c2:	0e 94 fe 00 	call	0x1fc	; 0x1fc <MOTOR_setMotion>
+	MOTOR_setRotate(curRotation);
+ 2c6:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <curRotation>
+ 2ca:	0e 94 03 01 	call	0x206	; 0x206 <MOTOR_setRotate>
+	
+	TIMER1_setCallBack(timer1_callback);
+ 2ce:	86 e3       	ldi	r24, 0x36	; 54
+ 2d0:	91 e0       	ldi	r25, 0x01	; 1
+ 2d2:	0e 94 48 03 	call	0x690	; 0x690 <TIMER1_setCallBack>
+	UART_onReceive(uart_receive);
+ 2d6:	88 e0       	ldi	r24, 0x08	; 8
+ 2d8:	91 e0       	ldi	r25, 0x01	; 1
+ 2da:	0e 94 7e 03 	call	0x6fc	; 0x6fc <UART_onReceive>
+	
 	//leds
 	DIO_pinMode(PIN_A0,OUTPUT);
- 2a4:	61 e0       	ldi	r22, 0x01	; 1
- 2a6:	80 ea       	ldi	r24, 0xA0	; 160
- 2a8:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+ 2de:	61 e0       	ldi	r22, 0x01	; 1
+ 2e0:	80 ea       	ldi	r24, 0xA0	; 160
+ 2e2:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
 	DIO_pinMode(PIN_A1,OUTPUT);
- 2ac:	61 e0       	ldi	r22, 0x01	; 1
- 2ae:	81 ea       	ldi	r24, 0xA1	; 161
- 2b0:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+ 2e6:	61 e0       	ldi	r22, 0x01	; 1
+ 2e8:	81 ea       	ldi	r24, 0xA1	; 161
+ 2ea:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
 	DIO_pinMode(PIN_A2,OUTPUT);
- 2b4:	61 e0       	ldi	r22, 0x01	; 1
- 2b6:	82 ea       	ldi	r24, 0xA2	; 162
- 2b8:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+ 2ee:	61 e0       	ldi	r22, 0x01	; 1
+ 2f0:	82 ea       	ldi	r24, 0xA2	; 162
+ 2f2:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
 	DIO_pinMode(PIN_A3,OUTPUT);
- 2bc:	61 e0       	ldi	r22, 0x01	; 1
- 2be:	83 ea       	ldi	r24, 0xA3	; 163
- 2c0:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
+ 2f6:	61 e0       	ldi	r22, 0x01	; 1
+ 2f8:	83 ea       	ldi	r24, 0xA3	; 163
+ 2fa:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
 
 	DIO_digitalWrite(PIN_A0, HIGH);
- 2c4:	61 e0       	ldi	r22, 0x01	; 1
- 2c6:	80 ea       	ldi	r24, 0xA0	; 160
- 2c8:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+ 2fe:	61 e0       	ldi	r22, 0x01	; 1
+ 300:	80 ea       	ldi	r24, 0xA0	; 160
+ 302:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 	DIO_digitalWrite(PIN_A1, HIGH);
- 2cc:	61 e0       	ldi	r22, 0x01	; 1
- 2ce:	81 ea       	ldi	r24, 0xA1	; 161
- 2d0:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+ 306:	61 e0       	ldi	r22, 0x01	; 1
+ 308:	81 ea       	ldi	r24, 0xA1	; 161
+ 30a:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 	
 	DIO_digitalWrite(PIN_A2,HIGH);
- 2d4:	61 e0       	ldi	r22, 0x01	; 1
- 2d6:	82 ea       	ldi	r24, 0xA2	; 162
- 2d8:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+ 30e:	61 e0       	ldi	r22, 0x01	; 1
+ 310:	82 ea       	ldi	r24, 0xA2	; 162
+ 312:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 	DIO_digitalWrite(PIN_A3,HIGH);
- 2dc:	61 e0       	ldi	r22, 0x01	; 1
- 2de:	83 ea       	ldi	r24, 0xA3	; 163
- 2e0:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
+ 316:	61 e0       	ldi	r22, 0x01	; 1
+ 318:	83 ea       	ldi	r24, 0xA3	; 163
+ 31a:	0e 94 84 02 	call	0x508	; 0x508 <DIO_digitalWrite>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 2e4:	2f ef       	ldi	r18, 0xFF	; 255
- 2e6:	83 ed       	ldi	r24, 0xD3	; 211
- 2e8:	90 e3       	ldi	r25, 0x30	; 48
- 2ea:	21 50       	subi	r18, 0x01	; 1
- 2ec:	80 40       	sbci	r24, 0x00	; 0
- 2ee:	90 40       	sbci	r25, 0x00	; 0
- 2f0:	e1 f7       	brne	.-8      	; 0x2ea <main+0x68>
- 2f2:	00 c0       	rjmp	.+0      	; 0x2f4 <main+0x72>
- 2f4:	00 00       	nop
-	_delay_ms(1000);
-	
+ 31e:	2f ef       	ldi	r18, 0xFF	; 255
+ 320:	83 ed       	ldi	r24, 0xD3	; 211
+ 322:	90 e3       	ldi	r25, 0x30	; 48
+ 324:	21 50       	subi	r18, 0x01	; 1
+ 326:	80 40       	sbci	r24, 0x00	; 0
+ 328:	90 40       	sbci	r25, 0x00	; 0
+ 32a:	e1 f7       	brne	.-8      	; 0x324 <main+0xa2>
+ 32c:	00 c0       	rjmp	.+0      	; 0x32e <main+0xac>
+ 32e:	00 00       	nop
 
-	GI_voidEnable();
- 2f6:	0e 94 0f 03 	call	0x61e	; 0x61e <GI_voidEnable>
-	TIMER0_init();
- 2fa:	0e 94 13 03 	call	0x626	; 0x626 <TIMER0_init>
-	TIMER1_init();
- 2fe:	0e 94 3d 03 	call	0x67a	; 0x67a <TIMER1_init>
-	UART_init();
- 302:	0e 94 76 03 	call	0x6ec	; 0x6ec <UART_init>
-	MOTOR_init();
- 306:	0e 94 da 00 	call	0x1b4	; 0x1b4 <MOTOR_init>
 	
-	MOTOR_setDutyCycle(30);
- 30a:	8e e1       	ldi	r24, 0x1E	; 30
- 30c:	0e 94 fb 00 	call	0x1f6	; 0x1f6 <MOTOR_setDutyCycle>
-	MOTOR_setMotion(curMotion);
- 310:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <curMotion>
- 314:	0e 94 fe 00 	call	0x1fc	; 0x1fc <MOTOR_setMotion>
-	MOTOR_setRotate(curRotation);
- 318:	80 91 63 00 	lds	r24, 0x0063	; 0x800063 <curRotation>
- 31c:	0e 94 03 01 	call	0x206	; 0x206 <MOTOR_setRotate>
-	
-	TIMER1_setCallBack(timer1_callback);
- 320:	86 e3       	ldi	r24, 0x36	; 54
- 322:	91 e0       	ldi	r25, 0x01	; 1
- 324:	0e 94 48 03 	call	0x690	; 0x690 <TIMER1_setCallBack>
-	UART_onReceive(uart_receive);
- 328:	88 e0       	ldi	r24, 0x08	; 8
- 32a:	91 e0       	ldi	r25, 0x01	; 1
- 32c:	0e 94 7e 03 	call	0x6fc	; 0x6fc <UART_onReceive>
 	
     while (1) 
     {
@@ -1000,8 +1000,7 @@ void TIMER0_init(void){
  626:	61 e0       	ldi	r22, 0x01	; 1
  628:	83 eb       	ldi	r24, 0xB3	; 179
  62a:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <DIO_pinMode>
-	//DIO_pinMode(PIN_B4,OUTPUT);
-	//DIO_digitalWrite(PIN_B4,HIGH);
+
 	//SET TO FAST PWM
 	SET_BIT(TCCR0,WGM00);
  62e:	83 b7       	in	r24, 0x33	; 51
