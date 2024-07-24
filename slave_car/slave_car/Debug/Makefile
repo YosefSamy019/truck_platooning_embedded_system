@@ -40,6 +40,7 @@ SUBDIRS :=  \
 ../APP \
 ../MCAL/DIO \
 ../MCAL/GI \
+../MCAL/SPI \
 ../MCAL/UART \
 ../MCAL/TIMER_1 \
 ../MCAL/TIMER_0
@@ -51,6 +52,7 @@ C_SRCS +=  \
 ../main.c \
 ../MCAL/DIO/DIO_program.c \
 ../MCAL/GI/GI_Program.c \
+../MCAL/SPI/SPI_interface.c \
 ../MCAL/TIMER_0/Timer0_PWM.c \
 ../MCAL/TIMER_1/timer1.c \
 ../MCAL/UART/UART_Bluetooth.c
@@ -67,6 +69,7 @@ HAL/MOTOR/MOTOR.o \
 main.o \
 MCAL/DIO/DIO_program.o \
 MCAL/GI/GI_Program.o \
+MCAL/SPI/SPI_interface.o \
 MCAL/TIMER_0/Timer0_PWM.o \
 MCAL/TIMER_1/timer1.o \
 MCAL/UART/UART_Bluetooth.o
@@ -76,6 +79,7 @@ HAL/MOTOR/MOTOR.o \
 main.o \
 MCAL/DIO/DIO_program.o \
 MCAL/GI/GI_Program.o \
+MCAL/SPI/SPI_interface.o \
 MCAL/TIMER_0/Timer0_PWM.o \
 MCAL/TIMER_1/timer1.o \
 MCAL/UART/UART_Bluetooth.o
@@ -85,6 +89,7 @@ HAL/MOTOR/MOTOR.d \
 main.d \
 MCAL/DIO/DIO_program.d \
 MCAL/GI/GI_Program.d \
+MCAL/SPI/SPI_interface.d \
 MCAL/TIMER_0/Timer0_PWM.d \
 MCAL/TIMER_1/timer1.d \
 MCAL/UART/UART_Bluetooth.d
@@ -94,6 +99,7 @@ HAL/MOTOR/MOTOR.d \
 main.d \
 MCAL/DIO/DIO_program.d \
 MCAL/GI/GI_Program.d \
+MCAL/SPI/SPI_interface.d \
 MCAL/TIMER_0/Timer0_PWM.d \
 MCAL/TIMER_1/timer1.d \
 MCAL/UART/UART_Bluetooth.d
@@ -134,6 +140,13 @@ MCAL/DIO/DIO_program.o: ../MCAL/DIO/DIO_program.c
 	
 
 MCAL/GI/GI_Program.o: ../MCAL/GI/GI_Program.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../HAL" -I"../LIB" -I"../APP" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega16 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega16" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MCAL/SPI/SPI_interface.o: ../MCAL/SPI/SPI_interface.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"../MCAL" -I"../HAL" -I"../LIB" -I"../APP" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega16 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega16" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

@@ -1,4 +1,5 @@
-main.d main.o: .././main.c \
+MCAL/SPI/SPI_interface.d MCAL/SPI/SPI_interface.o: \
+ ../MCAL/SPI/SPI_interface.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -10,17 +11,10 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\delay.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../LIB/STD_TYPES.h ../LIB/BIT_MATH.h ../MCAL/TIMER_0/Timer0_PWM.h \
- ../MCAL/DIO/DIO_interface.h ../MCAL/TIMER_1/timer1.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- ../MCAL/SPI/SPI_interface.h ../MCAL/SPI/SPI_config.h \
- ../MCAL/SPI/SPI_interface.h ../MCAL/SPI/SPI_private.h \
- ../MCAL/SPI/../../LIB/STD_TYPES.h \
- ../MCAL/SPI/../../MCAL/DIO/DIO_interface.h ../HAL/MOTOR/MOTOR.h
+ ../MCAL/SPI/../../LIB/BIT_MATH.h ../MCAL/SPI/../../LIB/STD_TYPES.h \
+ ../MCAL/SPI/../../MCAL/DIO/DIO_interface.h ../MCAL/SPI/SPI_interface.h \
+ ../MCAL/SPI/SPI_config.h ../MCAL/SPI/SPI_private.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -44,36 +38,16 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\delay.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-../LIB/STD_TYPES.h:
-
-../LIB/BIT_MATH.h:
-
-../MCAL/TIMER_0/Timer0_PWM.h:
-
-../MCAL/DIO/DIO_interface.h:
-
-../MCAL/TIMER_1/timer1.h:
-
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
-../MCAL/SPI/SPI_interface.h:
-
-../MCAL/SPI/SPI_config.h:
-
-../MCAL/SPI/SPI_interface.h:
-
-../MCAL/SPI/SPI_private.h:
+../MCAL/SPI/../../LIB/BIT_MATH.h:
 
 ../MCAL/SPI/../../LIB/STD_TYPES.h:
 
 ../MCAL/SPI/../../MCAL/DIO/DIO_interface.h:
 
-../HAL/MOTOR/MOTOR.h:
+../MCAL/SPI/SPI_interface.h:
+
+../MCAL/SPI/SPI_config.h:
+
+../MCAL/SPI/SPI_private.h:

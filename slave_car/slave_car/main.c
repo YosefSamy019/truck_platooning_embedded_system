@@ -15,11 +15,11 @@
 #include "TIMER_0/Timer0_PWM.h"
 #include "TIMER_1/timer1.h"
 #include "DIO/DIO_interface.h"
-#include "UART/UART_Bluetooth.h"
+#include "SPI/SPI_interface.h"
 
 #include "MOTOR/MOTOR.h"
 
-#define ROTATE_ARR_SIZE 25
+#define ROTATE_ARR_SIZE 10
 
 #define C_FORWARD 'F'
 #define C_BACKWARD 'B'
@@ -52,7 +52,7 @@ int main(void)
 	GI_voidEnable();
 	TIMER0_init();
 	TIMER1_init();
-	UART_init();
+	SPI_init();
 	MOTOR_init();
 	
 	MOTOR_setDutyCycle(30);
@@ -60,7 +60,7 @@ int main(void)
 	MOTOR_setRotate(curRotation);
 	
 	TIMER1_setCallBack(timer1_callback);
-	UART_onReceive(uart_receive);
+	SPI_setCallback(uart_receive);
 	
 	//leds
 	DIO_pinMode(PIN_A0,OUTPUT);
@@ -75,7 +75,6 @@ int main(void)
 	DIO_digitalWrite(PIN_A3,HIGH);
 	_delay_ms(1000);
 	
-
 	
 	
     while (1) 
@@ -91,7 +90,7 @@ int main(void)
 		
 		
 		
-		if(shiftArrFlag == 1){
+		if(shiftArrFlag > 0){
 			curRotation = rotateWatcher[ROTATE_ARR_SIZE - 1];
 			
 			//shift
@@ -102,7 +101,7 @@ int main(void)
 			
 			rotateWatcher[0] = futureRotation;
 			
-			shiftArrFlag = 0;
+			shiftArrFlag --;
 		}
 		
 		
@@ -137,7 +136,7 @@ void timer1_callback(void){
 	if(curMotion == stop){
 		curRotation = noRotate;
 	}else{
-		shiftArrFlag = 1;
+		shiftArrFlag ++;
 	}
 	
 }

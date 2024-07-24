@@ -31,6 +31,7 @@ typedef unsigned char		string[25];
 
 
 typedef void (*ptr2fun)(void);
+typedef void (*func_uint8_ptr)(uint8);
 
 
 #endif /* STD_TYPES_H_ */

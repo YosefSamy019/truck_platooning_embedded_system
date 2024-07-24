@@ -27,7 +27,7 @@ void UART_init(void) {
 
 }
 
-void UART_sendStr(u8 str[]) {
+void UART_sendStr(uint8 str[]) {
 	int i = 0;
 	while (str[i] != '\0') {
 		while (!(UCSRA & (1 << UDRE)));  // Wait until buffer is empty
@@ -36,7 +36,7 @@ void UART_sendStr(u8 str[]) {
 	}
 }
 
-void UART_onReceive(void (*ptr2fun)(u8)) {
+void UART_onReceive(void (*ptr2fun)(uint8)) {
 	UART_receiveCallback = ptr2fun;
 	// Enable the UART Receive Complete interrupt
 	UCSRB |= (1 << RXCIE);
