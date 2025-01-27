@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 000008ab  00000000  00000000  000015c5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000095c  00000000  00000000  00001e70  2**0
+  8 .debug_line   00000925  00000000  00000000  00001e70  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000214  00000000  00000000  000027cc  2**2
+  9 .debug_frame  00000214  00000000  00000000  00002798  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000537  00000000  00000000  000029e0  2**0
+ 10 .debug_str    000004e4  00000000  00000000  000029ac  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000b4f  00000000  00000000  00002f17  2**0
+ 11 .debug_loc    00000b4f  00000000  00000000  00002e90  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000a8  00000000  00000000  00003a66  2**0
+ 12 .debug_ranges 000000a8  00000000  00000000  000039df  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -96,6 +96,12 @@ Disassembly of section .text:
   8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000092 <lcd_send_cmd>:
+	}
+	
+	for(;i>=0;i--){
+		lcd_send_data(arr[i]+48);
+	}
+}
   92:	98 b3       	in	r25, 0x18	; 24
   94:	9b 7f       	andi	r25, 0xFB	; 251
   96:	98 bb       	out	0x18, r25	; 24
@@ -279,23 +285,45 @@ Disassembly of section .text:
  1fa:	08 95       	ret
 
 000001fc <lcd_set_cursor>:
+inline void lcd_set_cursor(unsigned char row,unsigned char col){
+	//set the 7nth bit to be high due to data sheet instructions
+	char temp = 0b10000000; 
+	
+	switch(row){
  1fc:	88 23       	and	r24, r24
  1fe:	19 f0       	breq	.+6      	; 0x206 <lcd_set_cursor+0xa>
  200:	81 30       	cpi	r24, 0x01	; 1
  202:	21 f0       	breq	.+8      	; 0x20c <lcd_set_cursor+0x10>
  204:	07 c0       	rjmp	.+14     	; 0x214 <lcd_set_cursor+0x18>
+		case 0: temp |= (LCD_ROW_ONE_ADDRESS + col); break;
  206:	86 2f       	mov	r24, r22
  208:	80 68       	ori	r24, 0x80	; 128
  20a:	05 c0       	rjmp	.+10     	; 0x216 <lcd_set_cursor+0x1a>
+		case 1: temp |= (LCD_ROW_TWO_ADDRESS + col); break;
  20c:	80 e4       	ldi	r24, 0x40	; 64
  20e:	86 0f       	add	r24, r22
  210:	80 68       	ori	r24, 0x80	; 128
  212:	01 c0       	rjmp	.+2      	; 0x216 <lcd_set_cursor+0x1a>
+		lcd_send_data(arr[i]+48);
+	}
+}
+inline void lcd_set_cursor(unsigned char row,unsigned char col){
+	//set the 7nth bit to be high due to data sheet instructions
+	char temp = 0b10000000; 
  214:	80 e8       	ldi	r24, 0x80	; 128
+	switch(row){
+		case 0: temp |= (LCD_ROW_ONE_ADDRESS + col); break;
+		case 1: temp |= (LCD_ROW_TWO_ADDRESS + col); break;
+		default:  break; 
+	}
+	lcd_send_cmd(temp);
  216:	0e 94 49 00 	call	0x92	; 0x92 <lcd_send_cmd>
  21a:	08 95       	ret
 
 0000021c <lcd_clear>:
+}
+inline void lcd_clear(){
+	lcd_send_cmd(0x01); //clear display
  21c:	81 e0       	ldi	r24, 0x01	; 1
  21e:	0e 94 49 00 	call	0x92	; 0x92 <lcd_send_cmd>
  222:	08 95       	ret
@@ -331,6 +359,7 @@ void uartISR(u8 c){
 
 int main(void)
 {
+	
 	sei();
  23e:	78 94       	sei
 	

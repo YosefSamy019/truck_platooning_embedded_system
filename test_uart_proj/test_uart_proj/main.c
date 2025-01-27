@@ -37,6 +37,7 @@ void uartISR(u8 c){
 
 int main(void)
 {
+	
 	sei();
 	
 	UART_init();
